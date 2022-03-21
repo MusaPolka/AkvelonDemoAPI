@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkvelonDemoAPI", "AkvelonDemoAPI\AkvelonDemoAPI.csproj", "{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{371149D4-0605-4580-A724-667B8AE1AE9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{371149D4-0605-4580-A724-667B8AE1AE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{371149D4-0605-4580-A724-667B8AE1AE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{371149D4-0605-4580-A724-667B8AE1AE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{371149D4-0605-4580-A724-667B8AE1AE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A45F799A-6BA9-46D3-9680-22A73BB94FA6}
+	EndGlobalSection
+EndGlobal
