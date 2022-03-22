@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkvelonDemoAPI", "AkvelonDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{371149D4-0605-4580-A724-667B8AE1AE9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{371149D4-0605-4580-A724-667B8AE1AE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{371149D4-0605-4580-A724-667B8AE1AE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{371149D4-0605-4580-A724-667B8AE1AE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
