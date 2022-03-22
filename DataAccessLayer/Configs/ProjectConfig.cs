@@ -7,6 +7,7 @@ namespace DataAccessLayer.Configs
 {
     public class ProjectConfig : IEntityTypeConfiguration<Project>
     {
+        // Configuring our Project model
         public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder.ToTable("Projects");

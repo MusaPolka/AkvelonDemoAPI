@@ -11,6 +11,7 @@ namespace DataAccessLayer.Configs
 {
     public class TaskModelConfig : IEntityTypeConfiguration<TaskModel>
     {
+        // Configuring our Task model
         public void Configure(EntityTypeBuilder<TaskModel> builder)
         {
             builder.ToTable("Tasks");

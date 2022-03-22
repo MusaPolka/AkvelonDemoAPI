@@ -12,6 +12,7 @@ namespace DataAccessLayer.Extensions
 {
     public static class DbContextConfigurator
     {
+        //Configuring our context
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AkvelonDemoAPIContext>(opts =>

@@ -11,6 +11,7 @@ namespace DataAccessLayer.Extensions
 {
     public class ProjectSeeder : IEntityTypeConfiguration<Project>
     {
+        //Adding data to our Project model
         public void Configure(EntityTypeBuilder<Project> builder)
         {
             builder.HasData

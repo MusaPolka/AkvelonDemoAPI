@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AkvelonDemoAPI", "AkvelonDemoAPI\AkvelonDemoAPI.csproj", "{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AkvelonDemoAPI", "AkvelonDemoAPI\AkvelonDemoAPI.csproj", "{BCF5CEEA-6985-42C7-96BF-58BF6B23AEA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{371149D4-0605-4580-A724-667B8AE1AE9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{371149D4-0605-4580-A724-667B8AE1AE9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "LoggerService\LoggerService.csproj", "{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{9E017EF2-153B-41AE-9045-55527A029C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{33F95C7F-30C8-4AE8-B4ED-494C703AAA10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E017EF2-153B-41AE-9045-55527A029C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E017EF2-153B-41AE-9045-55527A029C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E017EF2-153B-41AE-9045-55527A029C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E017EF2-153B-41AE-9045-55527A029C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33F95C7F-30C8-4AE8-B4ED-494C703AAA10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33F95C7F-30C8-4AE8-B4ED-494C703AAA10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33F95C7F-30C8-4AE8-B4ED-494C703AAA10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33F95C7F-30C8-4AE8-B4ED-494C703AAA10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,7 @@ namespace DataAccessLayer.Extensions
 {
     public class TaskSeeder : IEntityTypeConfiguration<TaskModel>
     {
+        //Adding data to our Task model
         public void Configure(EntityTypeBuilder<TaskModel> builder)
         {
             builder.HasData
