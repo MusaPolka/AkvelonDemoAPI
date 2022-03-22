@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contracts.Repository
+namespace BusinessLogicLayer.Base
 {
-    public interface ITaskRepository
+    public interface IProjectService
     {
-        Task<IEnumerable<TaskModel>> FetchAllTasksAsync(bool trackChanges);
+        public Task<IEnumerable<Project>> FetchAllAsync(bool trackChanges);
     }
 }

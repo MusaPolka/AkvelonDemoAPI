@@ -9,6 +9,6 @@ namespace Contracts.Repository
 {
     public interface IProjectRepository
     {
-        IEnumerable<Project> FetchAllProjects(bool trackChanges);
+        Task<IEnumerable<Project>> FetchAllProjectsAsync(bool trackChanges);
     }
 }

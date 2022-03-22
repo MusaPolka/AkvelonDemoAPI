@@ -1,5 +1,4 @@
-﻿
-using BusinessLogicLayer.Base;
+﻿using BusinessLogicLayer.Base;
 using Contracts.Repository;
 using DataAccessLayer.Models;
 using System;
@@ -10,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class ProjectService : IProjectService
+    public class TaskService : ITaskService
     {
         private readonly IRepositoryManager _repository;
 
-        public ProjectService(IRepositoryManager repository)
+        public TaskService(IRepositoryManager repository)
         {
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Project>> FetchAllAsync(bool trackChanges)
+        public async Task<IEnumerable<TaskModel>> FetchAllAsync(bool trackChanges)
         {
-            return await _repository.ProjectRepository.FetchAllProjectsAsync(trackChanges);
+            return await _repository.TaskRepository.FetchAllTasksAsync(trackChanges);
         }
     }
 }

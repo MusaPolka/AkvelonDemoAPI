@@ -1,4 +1,6 @@
-﻿using Contracts;
+﻿using BusinessLogicLayer.Base;
+using BusinessLogicLayer.Services;
+using Contracts;
 using Contracts.Repository;
 using LoggerService;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +37,16 @@ namespace AkvelonDemoAPI.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+        }
+
+        public static void ConfigureProjectService(this IServiceCollection services)
+        {
+            services.AddScoped<IProjectService, ProjectService>();
+        }
+
+        public static void ConfigureTaskService(this IServiceCollection services)
+        {
+            services.AddScoped<ITaskService, TaskService>();
         }
     }
 }

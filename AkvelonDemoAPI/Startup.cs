@@ -34,6 +34,8 @@ namespace AkvelonDemoAPI
             services.ConfigureCors();
             services.ConfigureLoggerService();
             services.ConfigureRepositoryManager();
+            services.ConfigureProjectService();
+            services.ConfigureTaskService();
 
             services.AddControllers();
 
