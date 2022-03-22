@@ -10,5 +10,6 @@ namespace BusinessLogicLayer.Base
     public interface IProjectService
     {
         public Task<IEnumerable<Project>> FetchAllAsync(bool trackChanges);
+        public Task<Project> FetchAsync(int Id, bool trackChanges);
     }
 }

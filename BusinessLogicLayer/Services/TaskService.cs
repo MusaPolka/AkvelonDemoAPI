@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer.Services
 {
@@ -18,9 +19,9 @@ namespace BusinessLogicLayer.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<TaskModel>> FetchAllAsync(bool trackChanges)
+        public async Task<IEnumerable<TaskModel>> FetchTaskForProjectAsync(int Id, bool trackChanges)
         {
-            return await _repository.TaskRepository.FetchAllTasksAsync(trackChanges);
+            return await _repository.TaskRepository.FetchTaskAsync(Id, trackChanges);
         }
     }
 }

@@ -20,5 +20,10 @@ namespace Repository.ModelRepository
         {
             return await FetchAll(trackChanges).OrderBy(c => c.Name).ToListAsync();
         }
+
+        public async Task<Project> FetchProjectAsync(int Id, bool trackChanges)
+        {
+            return await FetchByCondition(c => c.Id == Id, trackChanges).SingleOrDefaultAsync();
+        }
     }
 }

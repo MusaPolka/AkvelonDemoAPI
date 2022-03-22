@@ -1,8 +1,13 @@
-﻿using BusinessLogicLayer.Base;
+﻿using AutoMapper;
+using BusinessLogicLayer.Base;
 using Contracts;
+using DataAccessLayer.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AkvelonDemoAPI.Controllers
@@ -25,9 +30,50 @@ namespace AkvelonDemoAPI.Controllers
         {
             try
             {
-                var project = await _projectService.FetchAllAsync(trackChanges: false);
+                var projects = await _projectService.FetchAllAsync(trackChanges: false);
 
-                return Ok(project);
+                var projectsDto = projects.Select(c => new ProjectDto
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    StartedAt = c.StartedAt,
+                    CompletedAt = c.CompletedAt,
+                    Status = c.Status
+                });
+
+                return Ok(projectsDto);
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(GetProjects)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProject(int Id)
+        {
+            try
+            {
+                var project = await _projectService.FetchAsync(Id, trackChanges: false);
+
+                if (project == null)
+                {
+                    _loggerService.LogInfo($"Project with {Id} does not exist");
+                    return NotFound();
+                }
+
+                var projectDto = new ProjectDto
+                {
+                    Id = project.Id,
+                    Name = project.Name,
+                    StartedAt = project.StartedAt,
+                    CompletedAt = project.CompletedAt,
+                    Status = project.Status
+                };
+
+                return Ok(projectDto);
+
             }
             catch (Exception ex)
             {

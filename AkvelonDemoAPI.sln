@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{0EC6FF08-EFEA-47BD-B22F-856B9B9BFC4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "LoggerService\LoggerService.csproj", "{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonServices", "LoggerService\CommonServices.csproj", "{F3ED2E93-D4A8-4EBF-A9C1-83F1093988B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{9E017EF2-153B-41AE-9045-55527A029C61}"
 EndProject

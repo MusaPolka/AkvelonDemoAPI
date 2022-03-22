@@ -23,5 +23,10 @@ namespace BusinessLogicLayer.Services
         {
             return await _repository.ProjectRepository.FetchAllProjectsAsync(trackChanges);
         }
+
+        public async Task<Project> FetchAsync(int Id, bool trackChanges)
+        {
+            return await _repository.ProjectRepository.FetchProjectAsync(Id, trackChanges);
+        }
     }
 }
