@@ -34,5 +34,11 @@ namespace BusinessLogicLayer.Services
             _repository.ProjectRepository.CreateProject(project);
             _repository.SaveAsync();
         }
+
+        public void Delete(Project project)
+        {
+            _repository.ProjectRepository.DeleteProject(project);
+            _repository.SaveAsync();
+        }
     }
 }

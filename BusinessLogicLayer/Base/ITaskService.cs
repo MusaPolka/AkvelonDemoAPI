@@ -12,5 +12,6 @@ namespace BusinessLogicLayer.Base
         Task<IEnumerable<TaskModel>> FetchTasksForProjectAsync(int Id, bool trackChanges);
         Task<TaskModel> FetchTaskForProjectAsync(int projectId, int id, bool trackChanges);
         void Create(int projectId, TaskModel taskModel);
+        void Delete(TaskModel taskModel);
     }
 }

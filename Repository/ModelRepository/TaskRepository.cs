@@ -31,5 +31,10 @@ namespace Repository.ModelRepository
             taskModel.ProjectId = projectId;
             Create(taskModel);
         }
+
+        public void DeleteTask(TaskModel taskModel)
+        {
+            Delete(taskModel);
+        }
     }
 }

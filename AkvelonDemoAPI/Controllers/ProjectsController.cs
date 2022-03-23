@@ -120,5 +120,29 @@ namespace AkvelonDemoAPI.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProject(int id)
+        {
+            try
+            {
+                var project = await _projectService.FetchAsync(id, trackChanges: false);
+
+                if (project == null)
+                {
+                    _loggerService.LogInfo($"Project with {id} does not exist");
+                    return NotFound();
+                }
+
+                _projectService.Delete(project);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(DeleteProject)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

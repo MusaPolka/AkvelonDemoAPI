@@ -34,5 +34,11 @@ namespace BusinessLogicLayer.Services
             _repository.TaskRepository.CreateTask(projectId, taskModel);
             _repository.SaveAsync();
         }
+
+        public void Delete(TaskModel taskModel)
+        {
+            _repository.TaskRepository.DeleteTask(taskModel);
+            _repository.SaveAsync();
+        }
     }
 }

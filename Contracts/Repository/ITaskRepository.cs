@@ -14,5 +14,6 @@ namespace Contracts.Repository
         Task<TaskModel> FetchTaskAsync(int projectId, int id, bool trackChanges);
 
         void CreateTask(int projectId, TaskModel taskModel);
+        void DeleteTask(TaskModel taskModel);
     }
 }

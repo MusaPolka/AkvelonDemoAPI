@@ -14,5 +14,7 @@ namespace Contracts.Repository
         Task<Project> FetchProjectAsync(int Id, bool trackChanges);
 
         void CreateProject(Project project);
+
+        void DeleteProject(Project project);
     }
 }
