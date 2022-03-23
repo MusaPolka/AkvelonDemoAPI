@@ -34,16 +34,19 @@ namespace AkvelonDemoAPI.Extensions
             services.AddScoped<ILoggerManager, LoggerManager>();
         }
 
+        //Adding RepositoryManager service
         public static void ConfigureRepositoryManager(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
 
+        //Adding ProjectService service
         public static void ConfigureProjectService(this IServiceCollection services)
         {
             services.AddScoped<IProjectService, ProjectService>();
         }
 
+        //Adding TaskService service
         public static void ConfigureTaskService(this IServiceCollection services)
         {
             services.AddScoped<ITaskService, TaskService>();

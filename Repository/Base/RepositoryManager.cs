@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Repository.Base
 {
+    /// <summary>
+    /// Wrapper class that can be injected as a service. 
+    /// Provides ability to call Project or Task repository.
+    /// </summary>
     public class RepositoryManager : IRepositoryManager
     {
         private AkvelonDemoAPIContext _context;
@@ -44,6 +48,7 @@ namespace Repository.Base
             }
         }
 
+        //
         public Task SaveAsync()
         {
             return _context.SaveChangesAsync();

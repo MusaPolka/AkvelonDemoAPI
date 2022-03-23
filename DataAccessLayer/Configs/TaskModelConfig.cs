@@ -21,6 +21,8 @@ namespace DataAccessLayer.Configs
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Priority).IsRequired();
 
+
+            //Configuring that our TaskModel has Foreign key, and giving it Cascade delete property
             builder.HasOne(x => x.Project)
                    .WithMany(x => x.TasksList)
                    .HasForeignKey(x => x.ProjectId)

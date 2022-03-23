@@ -19,6 +19,8 @@ namespace DataAccessLayer.Contexts
         {
         }
 
+        //Here we are applying all of our configs we made
+        //TODO use System.Reflection to apply configs
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new ProjectConfig());

@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
+    /// <summary>
+    /// Repository base class that provides us CRUD operations, following Repository Pattern logic
+    /// 
+    /// Tracking changes improve our read-only queries. Which makes our app perform a lot faster
+    /// </summary>
+    /// <typeparam name="T">Any class that wants to use our CRUD operations</typeparam>
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected AkvelonDemoAPIContext _context;

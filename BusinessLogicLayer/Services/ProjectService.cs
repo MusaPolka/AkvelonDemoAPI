@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
+    /// <summary>
+    /// We could have call our Repository classes inside of our controllers.
+    /// But in order to free our controllers from repository logic we created additional layer
+    /// </summary>
     public class ProjectService : IProjectService
     {
         private readonly IRepositoryManager _repository;

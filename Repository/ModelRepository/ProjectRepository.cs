@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace Repository.ModelRepository
 {
+    /// <summary>
+    /// Implementing all of our CRUD operations for Project model
+    /// </summary>
     public class ProjectRepository : RepositoryBase<Project>, IProjectRepository
     {
         public ProjectRepository(AkvelonDemoAPIContext context) : base(context)
