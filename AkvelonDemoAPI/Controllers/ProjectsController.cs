@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.Base;
 using Contracts;
+using Contracts.Repository;
 using DataAccessLayer.DTOs;
 using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
@@ -19,11 +20,14 @@ namespace AkvelonDemoAPI.Controllers
     {
         private readonly IProjectService _projectService;
         private readonly ILoggerManager _loggerService;
+        private readonly IRepositoryManager _repository;
 
-        public ProjectsController(IProjectService projectService, ILoggerManager loggerService)
+        public ProjectsController(IProjectService projectService, ILoggerManager loggerService,
+            IRepositoryManager repository)
         {
             _projectService = projectService;
             _loggerService = loggerService;
+            _repository = repository;
         }
 
         [HttpGet]
@@ -141,6 +145,41 @@ namespace AkvelonDemoAPI.Controllers
             catch (Exception ex)
             {
                 _loggerService.LogError($"Error accured in the {nameof(DeleteProject)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProject(int id, [FromBody]UpdateProjectDto updateProjectDto)
+        {
+            try
+            {
+                if (updateProjectDto == null)
+                {
+                    _loggerService.LogInfo("UpdateProjectDto is null");
+                    return BadRequest("Object is null");
+                }
+
+                var project = await _projectService.FetchAsync(id, trackChanges: true);
+
+                if (project == null)
+                {
+                    _loggerService.LogInfo($"Project with {id} does not exist");
+                    return NotFound();
+                }
+
+                project.Name = updateProjectDto.Name;
+                project.StartedAt = updateProjectDto.StartedAt;
+                project.CompletedAt = updateProjectDto.CompletedAt;
+                project.Status = updateProjectDto.Status;
+
+                await _repository.SaveAsync();
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(UpdateProject)} action {ex}");
                 return StatusCode(500, "Internal server error");
             }
         }
