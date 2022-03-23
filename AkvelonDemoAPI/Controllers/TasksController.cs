@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Base;
 using Contracts;
 using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AkvelonDemoAPI.Controllers
 {
-    [Route("api/projects/{id}/tasks")]
+    [Route("api/projects/{projectId}/tasks")]
     [ApiController]
     public class TasksController : ControllerBase
     {
@@ -25,19 +26,19 @@ namespace AkvelonDemoAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetTasksForProject(int Id)
+        public async Task<IActionResult> GetTasksForProject(int projectId)
         {
             try
             {
-                var project = await _projectService.FetchAsync(Id, trackChanges: false);
+                var project = await _projectService.FetchAsync(projectId, trackChanges: false);
 
                 if (project == null)
                 {
-                    _loggerService.LogInfo($"Project with {Id} does not exist");
+                    _loggerService.LogInfo($"Project with {projectId} does not exist");
                     return NotFound();
                 }
 
-                var tasks = await _taskService.FetchTaskForProjectAsync(Id, trackChanges: false);
+                var tasks = await _taskService.FetchTasksForProjectAsync(projectId, trackChanges: false);
 
                 var tasksDto = tasks.Select(c => new TaskModelDto
                 {
@@ -52,6 +53,88 @@ namespace AkvelonDemoAPI.Controllers
             catch (Exception ex)
             {
                 _loggerService.LogError($"Error accured in the {nameof(GetTasksForProject)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpGet("{id}", Name = "TaskById")]
+        public async Task<IActionResult> GetTaskForProjectAsync(int projectId, int id)
+        {
+            try
+            {
+                var project = await _projectService.FetchAsync(projectId, trackChanges: false);
+
+                if (project == null)
+                {
+                    _loggerService.LogInfo($"Project with {projectId} does not exist");
+                    return NotFound();
+                }
+
+                var task = await _taskService.FetchTaskForProjectAsync(projectId, id, trackChanges: false);
+
+                if (task == null)
+                {
+                    _loggerService.LogInfo($"Task with {id} does not exist");
+                    return NotFound();
+                }
+
+                var taskDto = new TaskModelDto
+                {
+                    Id = task.Id,
+                    Name = task.Name,
+                    Description = task.Description,
+                    Priority = task.Priority
+                };
+
+                return Ok(taskDto);
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(GetTaskForProjectAsync)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTask(int projectId, [FromBody]CreateTaskDto createTaskDto)
+        {
+            try
+            {
+                if (createTaskDto == null)
+                {
+                    _loggerService.LogInfo("createTaskDto is null");
+                    return BadRequest("Object is null");
+                }
+
+                var project = await _projectService.FetchAsync(projectId, trackChanges: false);
+
+                if (project == null)
+                {
+                    _loggerService.LogInfo($"Project with {projectId} does not exist");
+                    return NotFound();
+                }
+
+                var task = new TaskModel
+                {
+                    Name = createTaskDto.Name,
+                    Description = createTaskDto.Description,
+                    Priority = createTaskDto.Priority
+                };
+
+                _taskService.Create(projectId, task);
+
+                var returnTask = new TaskModelDto
+                {
+                    Name = task.Name,
+                    Description = task.Description,
+                    Priority = task.Priority
+                };
+
+                return CreatedAtRoute("TaskById", new {projectId, id = returnTask.Id }, returnTask);
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(CreateTask)} action {ex}");
                 return StatusCode(500, "Internal server error");
             }
         }

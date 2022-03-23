@@ -28,5 +28,11 @@ namespace BusinessLogicLayer.Services
         {
             return await _repository.ProjectRepository.FetchProjectAsync(Id, trackChanges);
         }
+
+        public void Create(Project project)
+        {
+            _repository.ProjectRepository.CreateProject(project);
+            _repository.SaveAsync();
+        }
     }
 }

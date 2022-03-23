@@ -9,6 +9,10 @@ namespace Contracts.Repository
 {
     public interface ITaskRepository
     {
-        Task<IEnumerable<TaskModel>> FetchTaskAsync(int Id, bool trackChanges);
+        Task<IEnumerable<TaskModel>> FetchTasksAsync(int projectId, bool trackChanges);
+
+        Task<TaskModel> FetchTaskAsync(int projectId, int id, bool trackChanges);
+
+        void CreateTask(int projectId, TaskModel taskModel);
     }
 }

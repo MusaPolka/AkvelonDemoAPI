@@ -12,5 +12,7 @@ namespace Contracts.Repository
         Task<IEnumerable<Project>> FetchAllProjectsAsync(bool trackChanges);
 
         Task<Project> FetchProjectAsync(int Id, bool trackChanges);
+
+        void CreateProject(Project project);
     }
 }

@@ -16,9 +16,20 @@ namespace Repository.ModelRepository
         {
         }
 
-        public async Task<IEnumerable<TaskModel>> FetchTaskAsync(int Id, bool trackChanges)
+        public async Task<IEnumerable<TaskModel>> FetchTasksAsync(int projectId, bool trackChanges)
         {
-            return await FetchByCondition(e => e.ProjectId == Id, trackChanges).OrderBy(e => e.Id).ToListAsync();
+            return await FetchByCondition(e => e.ProjectId == projectId, trackChanges).OrderBy(e => e.Id).ToListAsync();
+        }
+
+        public async Task<TaskModel> FetchTaskAsync(int projectId, int id, bool trackChanges)
+        {
+            return await FetchByCondition(e => e.ProjectId == projectId && e.Id == id, trackChanges).SingleOrDefaultAsync();
+        }
+
+        public void CreateTask(int projectId, TaskModel taskModel)
+        {
+            taskModel.ProjectId = projectId;
+            Create(taskModel);
         }
     }
 }

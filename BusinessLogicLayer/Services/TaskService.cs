@@ -19,9 +19,20 @@ namespace BusinessLogicLayer.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<TaskModel>> FetchTaskForProjectAsync(int Id, bool trackChanges)
+        public async Task<IEnumerable<TaskModel>> FetchTasksForProjectAsync(int Id, bool trackChanges)
         {
-            return await _repository.TaskRepository.FetchTaskAsync(Id, trackChanges);
+            return await _repository.TaskRepository.FetchTasksAsync(Id, trackChanges);
+        }
+
+        public async Task<TaskModel> FetchTaskForProjectAsync(int projectId, int id, bool trackChanges)
+        {
+            return await _repository.TaskRepository.FetchTaskAsync(projectId, id, trackChanges);
+        }
+
+        public void Create(int projectId, TaskModel taskModel)
+        {
+            _repository.TaskRepository.CreateTask(projectId, taskModel);
+            _repository.SaveAsync();
         }
     }
 }

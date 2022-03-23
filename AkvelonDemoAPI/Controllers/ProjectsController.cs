@@ -2,6 +2,7 @@
 using BusinessLogicLayer.Base;
 using Contracts;
 using DataAccessLayer.DTOs;
+using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace AkvelonDemoAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/projects")]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
@@ -50,16 +51,16 @@ namespace AkvelonDemoAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetProject(int Id)
+        [HttpGet("{id}", Name ="ProjectById")]
+        public async Task<IActionResult> GetProject(int id)
         {
             try
             {
-                var project = await _projectService.FetchAsync(Id, trackChanges: false);
+                var project = await _projectService.FetchAsync(id, trackChanges: false);
 
                 if (project == null)
                 {
-                    _loggerService.LogInfo($"Project with {Id} does not exist");
+                    _loggerService.LogInfo($"Project with {id} does not exist");
                     return NotFound();
                 }
 
@@ -78,6 +79,44 @@ namespace AkvelonDemoAPI.Controllers
             catch (Exception ex)
             {
                 _loggerService.LogError($"Error accured in the {nameof(GetProjects)} action {ex}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProject([FromBody]CreateProjectDto createProjectDto)
+        {
+            try
+            {
+                if (createProjectDto == null)
+                {
+                    _loggerService.LogInfo("CreateProjectDto is null");
+                    return BadRequest("Object is null");
+                }
+
+                var project = new Project
+                {
+                    Name = createProjectDto.Name,
+                    StartedAt = createProjectDto.StartedAt,
+                    CompletedAt = createProjectDto.CompletedAt,
+                    Status = createProjectDto.Status,
+                };
+
+                _projectService.Create(project);
+
+                var returnProject = new ProjectDto
+                {
+                    Name = project.Name,
+                    StartedAt = project.StartedAt,
+                    CompletedAt = project.CompletedAt,
+                    Status = project.Status,
+                };
+
+                return CreatedAtRoute("ProjectById", new { id = returnProject.Id }, returnProject);
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError($"Error accured in the {nameof(GetProject)} action {ex}");
                 return StatusCode(500, "Internal server error");
             }
         }

@@ -10,6 +10,6 @@ namespace Contracts.Repository
     {
         IProjectRepository ProjectRepository { get; }
         ITaskRepository TaskRepository { get; }
-        void Save();
+        Task SaveAsync();
     }
 }

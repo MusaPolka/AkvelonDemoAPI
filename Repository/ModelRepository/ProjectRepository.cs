@@ -25,5 +25,10 @@ namespace Repository.ModelRepository
         {
             return await FetchByCondition(c => c.Id == Id, trackChanges).SingleOrDefaultAsync();
         }
+
+        public void CreateProject(Project project)
+        {
+            Create(project);
+        }
     }
 }
